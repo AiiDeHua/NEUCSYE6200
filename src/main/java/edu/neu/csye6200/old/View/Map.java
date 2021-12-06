@@ -1,8 +1,7 @@
 package edu.neu.csye6200.old.View;
 
+import javax.swing.*;
 import java.awt.*;
-
-import javax.swing.JButton;
 
 public class Map {
 

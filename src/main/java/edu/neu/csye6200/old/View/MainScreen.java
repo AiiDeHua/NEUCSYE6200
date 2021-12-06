@@ -1,18 +1,16 @@
 package edu.neu.csye6200.old.View;
 
+import edu.neu.csye6200.old.Main.mData;
+import edu.neu.csye6200.old.Model.Quest;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.awt.image.CropImageFilter;
-import java.awt.image.FilteredImageSource;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import edu.neu.csye6200.old.Main.mData;
-import edu.neu.csye6200.old.Model.Quest;
 
 public class MainScreen extends JPanel {
 	/**

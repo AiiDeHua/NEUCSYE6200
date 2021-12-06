@@ -1,6 +1,8 @@
 package edu.neu.csye6200.old.Model;
-import java.awt.Rectangle;
+
 import edu.neu.csye6200.old.View.MainScreen;
+
+import java.awt.*;
 
 public class Health {
 	//class that handle the health bar

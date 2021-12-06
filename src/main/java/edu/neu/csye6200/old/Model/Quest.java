@@ -1,6 +1,6 @@
 package edu.neu.csye6200.old.Model;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Quest extends Rectangle {

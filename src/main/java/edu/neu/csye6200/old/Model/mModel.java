@@ -1,14 +1,14 @@
 package edu.neu.csye6200.old.Model;
 
-import java.awt.Point;
+import edu.neu.csye6200.old.View.Block;
+import edu.neu.csye6200.old.View.Map;
+
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
-
-import edu.neu.csye6200.old.View.Block;
-import edu.neu.csye6200.old.View.Map;
 
 public class mModel implements Serializable {
 

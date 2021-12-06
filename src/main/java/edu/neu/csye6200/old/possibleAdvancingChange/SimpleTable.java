@@ -1,10 +1,7 @@
 package edu.neu.csye6200.old.possibleAdvancingChange;
 
-import java.awt.Dimension;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
+import java.awt.*;
 
 public class SimpleTable {
 	JFrame jf = new JFrame("Score Board");

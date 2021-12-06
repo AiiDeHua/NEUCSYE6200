@@ -1,18 +1,15 @@
 package edu.neu.csye6200.old.View;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import edu.neu.csye6200.old.Main.mData;
+import edu.neu.csye6200.old.Model.Item;
+import edu.neu.csye6200.old.Model.Team;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import edu.neu.csye6200.old.Main.mData;
-import edu.neu.csye6200.old.Model.Item;
-import edu.neu.csye6200.old.Model.Team;
 
 public class MainScreenUI extends Rectangle {
 	/**

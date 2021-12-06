@@ -2,8 +2,8 @@ package edu.neu.csye6200.old.Main;
 
 import edu.neu.csye6200.old.Controller.Controller;
 
-import java.awt.EventQueue;
-import javax.swing.Timer;
+import javax.swing.*;
+import java.awt.*;
 
 
 public class Main {

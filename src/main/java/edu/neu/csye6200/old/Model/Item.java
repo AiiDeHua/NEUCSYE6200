@@ -1,7 +1,5 @@
 package edu.neu.csye6200.old.Model;
 
-import java.awt.*;
-
 public class Item {
 	private int good_bad;
 	private int x;

@@ -1,9 +1,13 @@
 package edu.neu.csye6200.old.Main;
 
-import java.awt.Point;
+import edu.neu.csye6200.old.Model.Item;
+import edu.neu.csye6200.old.Model.Quest;
+import edu.neu.csye6200.old.Model.Team;
+import edu.neu.csye6200.old.Model.mModel;
+import edu.neu.csye6200.old.View.Map;
+
+import java.awt.*;
 import java.util.ArrayList;
-import edu.neu.csye6200.old.Model.*;
-import edu.neu.csye6200.old.View.*;
 
 public class mData {
     //mData is a package of data from mModel

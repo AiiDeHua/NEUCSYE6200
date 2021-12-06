@@ -1,18 +1,17 @@
 package edu.neu.csye6200.old.View;
 
+import edu.neu.csye6200.old.Controller.Controller;
+import edu.neu.csye6200.old.Controller.Mouse;
+import edu.neu.csye6200.old.Main.mData;
+import edu.neu.csye6200.old.Model.Quest;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.*;
-
-import edu.neu.csye6200.old.Controller.Controller;
-import edu.neu.csye6200.old.Controller.Mouse;
-import edu.neu.csye6200.old.Main.mData;
-import edu.neu.csye6200.old.Model.Quest;
 
 public class View extends JFrame {
 	/**

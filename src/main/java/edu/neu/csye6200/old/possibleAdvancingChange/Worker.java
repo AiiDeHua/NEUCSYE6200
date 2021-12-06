@@ -1,13 +1,12 @@
 package edu.neu.csye6200.old.possibleAdvancingChange;
 
 
-import java.awt.Event;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+import edu.neu.csye6200.old.Model.Quest;
 
 import javax.tools.Tool;
-
-import edu.neu.csye6200.old.Model.Quest;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 abstract class Worker {

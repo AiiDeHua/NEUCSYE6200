@@ -4,15 +4,9 @@ import edu.neu.csye6200.old.Main.mData;
 import edu.neu.csye6200.old.Model.mModel;
 import edu.neu.csye6200.old.View.View;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
+import java.io.*;
 
 public class Controller {
 	// global variable
