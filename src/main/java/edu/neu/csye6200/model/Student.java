@@ -11,11 +11,4 @@ public class Student extends Person{
         super(row);
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "age=" + this.getAge() +
-                ", name='" + this.getName() + '\'' +
-                '}';
-    }
 }

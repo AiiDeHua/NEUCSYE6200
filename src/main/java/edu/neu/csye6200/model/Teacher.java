@@ -11,7 +11,7 @@ public class Teacher extends Person{
 
     public Teacher(Row row) {
         super(row);
-        credit = row.getCell(2).getNumericCellValue();
+        credit = row.getCell(3).getNumericCellValue();
     }
 
     @Override
