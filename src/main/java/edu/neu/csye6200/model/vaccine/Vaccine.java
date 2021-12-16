@@ -7,3 +7,4 @@ public interface Vaccine {
     String getDescription();
     int[] getExpiringTime();
 }
+
