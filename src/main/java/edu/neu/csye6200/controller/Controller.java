@@ -1,11 +1,13 @@
 package edu.neu.csye6200.controller;
 
 import edu.neu.csye6200.common.Constant;
+import edu.neu.csye6200.model.classroom.ClassroomRecord;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
 import edu.neu.csye6200.util.FileUtil;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,23 @@ public class Controller {
         studentList.forEach(x -> logger.info(x.toString()));
 //        studentList.forEach(logger::info);
         teacherList.forEach(x -> logger.info(x.toString()));
+        spreadToClassroom(studentList, teacherList);
+    }
+
+    public ClassroomRecord spreadToClassroom(List<Student> studentList, List<Teacher> teacherList) {
+        ClassroomRecord classroomRecord = new ClassroomRecord();
+        List<Student> copyStudentList = new ArrayList<>(studentList.size());
+        copyStudentList.addAll(studentList);
+        List<Teacher> copyTeacherList = new ArrayList<>(teacherList.size());
+        copyTeacherList.addAll(teacherList);
+        for (Teacher teacher : teacherList) {
+            classroomRecord.addTeacher(teacher);
+        }
+        for (Student student : studentList) {
+            classroomRecord.addStudent(student);
+        }
+
+        return classroomRecord;
     }
 
     public static List<Student> readStudentInput(String path) {
