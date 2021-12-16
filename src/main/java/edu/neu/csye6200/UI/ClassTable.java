@@ -72,9 +72,6 @@ public class ClassTable {
         container.add(right, BorderLayout.EAST);
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
-        JButton addStudent = new JButton("Add new student");
-        right.add(addStudent);
-
         //Middle Panel
         JPanel middle = new JPanel();
         container.add(middle, BorderLayout.CENTER);

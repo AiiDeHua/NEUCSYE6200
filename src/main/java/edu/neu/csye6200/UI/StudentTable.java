@@ -76,6 +76,11 @@ public class StudentTable {
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
         JButton addStudent = new JButton("Add new student");
+
+        addStudent.addActionListener(e->{
+            AddNewStudentPanel addNewStudentPanel = new AddNewStudentPanel();
+            addNewStudentPanel.showFrame();
+        });
         right.add(addStudent);
 
         //Middle Panel

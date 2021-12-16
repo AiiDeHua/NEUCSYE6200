@@ -1,4 +1,5 @@
 package edu.neu.csye6200.model;
+
 import edu.neu.csye6200.model.vaccine.VaccineFactory;
 import edu.neu.csye6200.model.vaccine.VaccineRecord;
 import edu.neu.csye6200.util.DateUtil;
@@ -32,35 +33,29 @@ public class Person {
         this.name = row.getCell(0).toString();
         this.age = (int) row.getCell(1).getNumericCellValue();
         String[] vaccineRecords = row.getCell(2).getStringCellValue().split(",");
-        if(vaccineRecords.length<2){
+        if (vaccineRecords.length < 2) {
             return;
         }
-        for(int i = 0;i<vaccineRecords.length;i+=2){
+        for (int i = 0; i < vaccineRecords.length; i += 2) {
             List<Date> dateList = new ArrayList<>(4);
             String[] inputDateList;
-            if(vaccineRecords[i+1].contains(":"))
-            {
+            if (vaccineRecords[i + 1].contains(":")) {
                 //System.out.println(vaccineRecords[i+1]);
-                inputDateList = vaccineRecords[i+1].split(":");
-            }else
-            {//System.out.println(vaccineRecords[i+1]+"-----------------");
+                inputDateList = vaccineRecords[i + 1].split(":");
+            } else {//System.out.println(vaccineRecords[i+1]+"-----------------");
                 inputDateList = new String[]{vaccineRecords[i + 1]};
             }
 
-            if(inputDateList.length>=1){
-                for(String inputDate:inputDateList){
-
-                        try {
-
-                            dateList.add(DateUtil.formatter.parse(inputDate));
-                        } catch (ParseException e) {
-                            //e.printStackTrace();
-                        }
-
-
+            if (inputDateList.length >= 1) {
+                for (String inputDate : inputDateList) {
+                    try {
+                        dateList.add(DateUtil.formatter.parse(inputDate));
+                    } catch (ParseException e) {
+                        //e.printStackTrace();
+                    }
                 }
             }
-            this.vaccineRecords.add(new VaccineRecord(VaccineFactory.getVaccine(vaccineRecords[i]),dateList));
+            this.vaccineRecords.add(new VaccineRecord(VaccineFactory.getVaccine(vaccineRecords[i]), dateList));
         }
 
     }
@@ -81,11 +76,11 @@ public class Person {
         this.name = name;
     }
 
-    public VaccineRecord getVaccineRecords(String name){
-        int r=0;
-        for(int i=0;i<vaccineRecords.size();i++){
-            if(vaccineRecords.get(i).getVacName().equals(name)){
-                r=i;
+    public VaccineRecord getVaccineRecords(String name) {
+        int r = 0;
+        for (int i = 0; i < vaccineRecords.size(); i++) {
+            if (vaccineRecords.get(i).getVacName().equals(name)) {
+                r = i;
             }
         }
         return this.vaccineRecords.get(r);
@@ -98,7 +93,7 @@ public class Person {
         sb.append(name);
         sb.append(" age ");
         sb.append(age).append("\n");
-        for(VaccineRecord vaccineRecord:vaccineRecords){
+        for (VaccineRecord vaccineRecord : vaccineRecords) {
             sb.append(vaccineRecord);
         }
         sb.append("\n");

@@ -75,9 +75,6 @@ public class TeacherTable {
         container.add(right,BorderLayout.EAST);
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
-        JButton addTeacher = new JButton("Add new teacher");
-        right.add(addTeacher);
-
         //Middle Panel
         JPanel middle = new JPanel();
         container.add(middle,BorderLayout.CENTER);
