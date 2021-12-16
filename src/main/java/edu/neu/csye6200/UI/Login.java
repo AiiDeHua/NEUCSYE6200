@@ -72,7 +72,9 @@ public class Login {
             }else{
                 if(tf.getText().startsWith("s")){
                     if(psf.getPassword().length!=0){
-                        new TeacherTable().showFrame();
+                        //new TeacherTable().showFrame();
+                        //fr.dispose();
+                        new VaccinationTable().showFrame();
                         fr.dispose();
                     }else{
                         JOptionPane.showMessageDialog(null,"Empty password","!",JOptionPane.WARNING_MESSAGE);

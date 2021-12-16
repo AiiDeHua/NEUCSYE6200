@@ -21,7 +21,7 @@ public class Student extends Person{
         Calendar c = Calendar.getInstance();
 
         VaccineRecord re= getVaccineRecords(name);
-        System.out.println(re.getVacName()+" "+re.getDateList().toString());
+        //System.out.println(re.getVacName()+" "+re.getDateList().toString());
         Vaccine k =re.getVaccine();
 
         if(k.getExpiringTime().length==0) {return null;}
@@ -30,7 +30,7 @@ public class Student extends Person{
             return c.getTime();
         }
         Date LastVaxDate=re.getDateList().get(re.getDateList().size()-1);
-        int tempExpire= k.getExpiringTime()[re.getDateList().size()-1];
+        int tempExpire= k.getExpiringTime()[0];
         c.setTime(LastVaxDate);
         c.add(Calendar.DATE,tempExpire);
         return c.getTime();
