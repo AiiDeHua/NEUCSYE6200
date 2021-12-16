@@ -56,13 +56,27 @@ public class StudentTable {
             fr.dispose();
         });
 
-        JButton back = new JButton("Back To Login");
+        JButton back = new JButton("Logout");
         left.add(back);
         back.addActionListener(e->{
             new Login().showFrame();
             fr.dispose();
         });
 
+        JButton addStudent = new JButton("Add new student");
+
+        addStudent.addActionListener(e->{
+            AddNewStudentPanel addNewStudentPanel = new AddNewStudentPanel();
+            addNewStudentPanel.showFrame();
+        });
+        left.add(addStudent);
+
+        JButton vaccinePage = new JButton("View the Vaccine Page");
+
+        vaccinePage.addActionListener(e->{
+            new VaccinationTable().showFrame();
+        });
+        left.add(vaccinePage);
         //Top Panel
         JPanel top = new JPanel();
         container.add(top,BorderLayout.NORTH);
@@ -71,17 +85,10 @@ public class StudentTable {
         top.add(tittle);
 
         //Right Panel
-        JPanel right = new JPanel();
-        container.add(right,BorderLayout.EAST);
-        right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
+//        JPanel right = new JPanel();
+//        container.add(right,BorderLayout.EAST);
+//        right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
-        JButton addStudent = new JButton("Add new student");
-
-        addStudent.addActionListener(e->{
-            AddNewStudentPanel addNewStudentPanel = new AddNewStudentPanel();
-            addNewStudentPanel.showFrame();
-        });
-        right.add(addStudent);
 
         //Middle Panel
         JPanel middle = new JPanel();

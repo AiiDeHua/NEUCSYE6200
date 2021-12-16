@@ -56,7 +56,7 @@ public class TeacherTable {
             fr.dispose();
         });
 
-        JButton back = new JButton("Back To Login");
+        JButton back = new JButton("Logout");
         left.add(back);
         back.addActionListener(e->{
             new Login().showFrame();
@@ -71,9 +71,9 @@ public class TeacherTable {
         top.add(tittle);
 
         //Right Panel
-        JPanel right = new JPanel();
-        container.add(right,BorderLayout.EAST);
-        right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
+//        JPanel right = new JPanel();
+//        container.add(right,BorderLayout.EAST);
+//        right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
         //Middle Panel
         JPanel middle = new JPanel();

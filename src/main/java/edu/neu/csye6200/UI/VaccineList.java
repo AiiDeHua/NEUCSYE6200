@@ -40,7 +40,7 @@ public class VaccineList {
         container.add(left,BorderLayout.WEST);
         left.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
         //Button on left
-        JButton back = new JButton("Back To Login");
+        JButton back = new JButton("Logout");
         left.add(back);
         back.addActionListener(e->{
             new Login().showFrame();

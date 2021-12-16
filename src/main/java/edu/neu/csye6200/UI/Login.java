@@ -74,8 +74,8 @@ public class Login {
                     if(psf.getPassword().length!=0){
                         //new TeacherTable().showFrame();
                         //fr.dispose();
-                        new VaccinationTable().showFrame();
-                        fr.dispose();
+//                        new VaccinationTable().showFrame();
+//                        fr.dispose();
                     }else{
                         JOptionPane.showMessageDialog(null,"Empty password","!",JOptionPane.WARNING_MESSAGE);
                     }

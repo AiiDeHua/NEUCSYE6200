@@ -53,7 +53,7 @@ public class ClassTable {
             fr.dispose();
         });
 
-        JButton back = new JButton("Back To Login");
+        JButton back = new JButton("Logout");
         left.add(back);
         back.addActionListener(e -> {
             new Login().showFrame();
@@ -77,9 +77,6 @@ public class ClassTable {
         container.add(middle, BorderLayout.CENTER);
         middle.setLayout(new BorderLayout());
 
-        JLabel message = new JLabel("Please click on the vaccine column to check the detials.");
-        message.setFont(new Font(message.getFont().getName(), message.getFont().getStyle(), 25));
-        middle.add(message, BorderLayout.NORTH);
         //Middle Table
         JTable studentTable = new JTable();
         middle.add(studentTable, BorderLayout.CENTER);
