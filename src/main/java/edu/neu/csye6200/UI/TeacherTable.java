@@ -2,12 +2,16 @@ package edu.neu.csye6200.UI;
 
 import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.controller.Controller;
+import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.model.vaccine.VaccineRecord;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -71,9 +75,6 @@ public class TeacherTable {
         container.add(right,BorderLayout.EAST);
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
-        JButton addTeacher = new JButton("Add new teacher");
-        right.add(addTeacher);
-
         //Middle Panel
         JPanel middle = new JPanel();
         container.add(middle,BorderLayout.CENTER);
@@ -103,7 +104,7 @@ public class TeacherTable {
         for (Teacher teacher : teacherList) {
             addRow(teacher);
         }
-
+        teacherTable.getColumnModel().getColumn(2).setCellRenderer(new MyButtonRender());
         //Top Panel
         JPanel bottom = new JPanel();
         container.add(bottom,BorderLayout.SOUTH);
@@ -116,7 +117,35 @@ public class TeacherTable {
 //            System.out.println("此处跳转");
 //        });
 
+        teacherTable.addMouseListener( new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int rowI = teacherTable.rowAtPoint(e.getPoint());// 得到table的行号
+                int columnI = teacherTable.columnAtPoint(e.getPoint());// 得到table的列号
+//                JOptionPane.showMessageDialog(container,getVaccine(studentList,(String)studentTable.getValueAt(rowI, columnI)));
+                if (rowI > -1&&columnI>-1){
+                    showVaccine((String)teacherTable.getValueAt(rowI, 0));
+                }
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
         //显示窗体，放在最后
         fr.setVisible(true);
     }
@@ -125,5 +154,15 @@ public class TeacherTable {
         rowData.add(teacher.getName());
         rowData.add(teacher.getAge());
         tableModel.addRow(rowData);
+    }
+    public void showVaccine(String teacherName){
+        List<VaccineRecord> list = new ArrayList<>();
+        for(Teacher teacher:teacherList){
+            if(teacher.getName().equals(teacherName)){
+                list = teacher.getVaccineRecords();
+            }
+        }
+        VaccineList vl = new VaccineList();
+        vl.showFrame(teacherName,list);
     }
 }

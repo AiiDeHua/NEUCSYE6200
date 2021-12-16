@@ -68,9 +68,11 @@ public class FileUtil {
             XSSFCell cell2 = row.createCell(2);
             cell2.setCellValue(list.get(2));
 
-            XSSFCell cell3 = row.createCell(3);
-            cell3.setCellType(CellType.NUMERIC);
-            cell3.setCellValue(Double.parseDouble(list.get(3)));
+            if(list.size()>3){
+                XSSFCell cell3 = row.createCell(3);
+                cell3.setCellType(CellType.NUMERIC);
+                cell3.setCellValue(Double.parseDouble(list.get(3)));
+            }
 
             FileOutputStream fout = new FileOutputStream(path);
             workbook.write(fout);

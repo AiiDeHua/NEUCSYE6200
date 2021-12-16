@@ -3,11 +3,14 @@ package edu.neu.csye6200.UI;
 import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.controller.Controller;
 import edu.neu.csye6200.model.Student;
+import edu.neu.csye6200.model.vaccine.VaccineRecord;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -15,6 +18,7 @@ import java.util.Vector;
 public class StudentTable {
     DefaultTableModel tableModel = new DefaultTableModel();
     List<Student> studentList = new ArrayList<>();
+    JTable studentTable;
 
     public void showFrame(){
         //创捷窗体对象
@@ -72,6 +76,11 @@ public class StudentTable {
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
 
         JButton addStudent = new JButton("Add new student");
+
+        addStudent.addActionListener(e->{
+            AddNewStudentPanel addNewStudentPanel = new AddNewStudentPanel();
+            addNewStudentPanel.showFrame();
+        });
         right.add(addStudent);
 
         //Middle Panel
@@ -83,7 +92,7 @@ public class StudentTable {
         message.setFont(new Font(message.getFont().getName(), message.getFont().getStyle(), 25));
         middle.add(message,BorderLayout.NORTH);
             //Middle Table
-        JTable studentTable = new JTable();
+        studentTable = new JTable();
         middle.add(studentTable,BorderLayout.CENTER);
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
         tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
@@ -104,6 +113,7 @@ public class StudentTable {
             addRow(student);
         }
         studentTable.getColumnModel().getColumn(2).setCellRenderer(new MyButtonRender());
+
         //Top Panel
         JPanel bottom = new JPanel();
         container.add(bottom,BorderLayout.SOUTH);
@@ -115,7 +125,35 @@ public class StudentTable {
 //        button.addActionListener(e->{
 //            System.out.println("此处跳转");
 //        });
+        studentTable.addMouseListener( new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int rowI = studentTable.rowAtPoint(e.getPoint());// 得到table的行号
+                int columnI = studentTable.columnAtPoint(e.getPoint());// 得到table的列号
+//                JOptionPane.showMessageDialog(container,getVaccine(studentList,(String)studentTable.getValueAt(rowI, columnI)));
+                if (rowI > -1&&columnI>-1){
+                    showVaccine((String)studentTable.getValueAt(rowI, 0));
+                }
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
 
         //显示窗体，放在最后
         fr.setVisible(true);
@@ -125,5 +163,16 @@ public class StudentTable {
         rowData.add(student.getName());
         rowData.add(student.getAge());
         tableModel.addRow(rowData);
+    }
+
+    public void showVaccine(String studentName){
+        List<VaccineRecord> list = new ArrayList<>();
+        for(Student student:studentList){
+            if(student.getName().equals(studentName)){
+                list = student.getVaccineRecords();
+            }
+        }
+        VaccineList vl = new VaccineList();
+        vl.showFrame(studentName,list);
     }
 }
