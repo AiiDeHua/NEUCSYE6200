@@ -9,22 +9,17 @@ public class ClassroomRecord {
 
     enum ClassCode {
         SixToTwelve(0), ThirteenToTwentyFour(1), TwentyFiveToThirtyFive(2), ThirtySixToFortySeven(3), FortyEightToFiftyNine(4), Sixty(5);
-
         public final int code;
-
-        private ClassCode(int code) {
+        ClassCode(int code) {
             this.code = code;
         }
     }
 
     private List<List<Classroom>> classroomRecord = new ArrayList<>();
-//    private List<Classroom> sixToTwelveClassroomList = new ArrayList<>();
-//    private List<Classroom> ThirteenToTwentyFourClassroomList = new ArrayList<>();
-//    private List<Classroom> TwentyFiveToThirtyFiveClassroomList = new ArrayList<>();
-//    private List<Classroom> ThirtySixToFortySevenClassroomList = new ArrayList<>();
-//    private List<Classroom> FortyEightToFiftyNineClassroomList = new ArrayList<>();
-//    private List<Classroom> SixtyClassroomList = new ArrayList<>();
 
+    public List<List<Classroom>> getClassroomRecord() {
+        return classroomRecord;
+    }
 
     public ClassroomRecord() {
         List<Classroom> sixToTwelveClassroomList = new ArrayList<>();
@@ -61,20 +56,6 @@ public class ClassroomRecord {
     }
 
     public void addStudent(Student student) {
-//        for(int i = 0;i<5;i++){
-//            ListIterator<Classroom> iterator = classroomRecord.get(i).listIterator();
-//            while (iterator.hasNext()){
-//                Classroom classroom = iterator.next();
-////                if (classroom.isFull()) {
-////                    classroomRecord.get(i).add(getClassroom(i));
-////                    continue;
-////                }
-//                if (classroom.addStudent(student)) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
         List<Classroom> classroomList = classroomRecord.get(getClassPosition(student.getAge()));
         for(Classroom classroom:classroomList){
             classroom.addStudent(student);

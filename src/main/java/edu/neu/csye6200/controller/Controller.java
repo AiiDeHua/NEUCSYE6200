@@ -24,13 +24,15 @@ public class Controller {
         List<Student> studentList = readStudentInput(Constant.EXCEL_PATH);
         List<Teacher> teacherList = readTeacherInput(Constant.EXCEL_PATH);
         studentList.forEach(x -> logger.info(x.toString()));
-        //studentList.forEach(x -> logger.info(x.getRecord().toString()));
-//        studentList.forEach(logger::info);
         teacherList.forEach(x -> logger.info(x.toString()));
         spreadToClassroom(studentList, teacherList);
     }
 
-    public ClassroomRecord spreadToClassroom(List<Student> studentList, List<Teacher> teacherList) {
+    public static ClassroomRecord spreadToClassroomWithInputData(){
+        return spreadToClassroom(getStudentData(),getTeacherData());
+    }
+
+    private static ClassroomRecord spreadToClassroom(List<Student> studentList, List<Teacher> teacherList) {
         ClassroomRecord classroomRecord = new ClassroomRecord();
         List<Student> copyStudentList = new ArrayList<>(studentList.size());
         copyStudentList.addAll(studentList);
@@ -42,8 +44,15 @@ public class Controller {
         for (Student student : studentList) {
             classroomRecord.addStudent(student);
         }
-
         return classroomRecord;
+    }
+
+    public static List<Student> getStudentData(){
+        return readStudentInput(Constant.EXCEL_PATH);
+    }
+
+    public static List<Teacher> getTeacherData(){
+        return readTeacherInput(Constant.EXCEL_PATH);
     }
 
     public static List<Student> readStudentInput(String path) {
