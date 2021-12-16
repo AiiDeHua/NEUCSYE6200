@@ -16,9 +16,11 @@ public class Person {
     private String name;
     private List<VaccineRecord> vaccineRecords = new ArrayList<>();
 
-    public Person() {}
     public List<VaccineRecord> getVaccineRecords() {
         return vaccineRecords;
+    }
+
+    public Person() {
     }
 
     public Person(int age, String name) {
