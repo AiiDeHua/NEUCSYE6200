@@ -32,14 +32,27 @@ public class Person {
         }
         for(int i = 0;i<vaccineRecords.length;i+=2){
             List<Date> dateList = new ArrayList<>(4);
-            String[] inputDateList = vaccineRecords[i+1].split(":");
-            if(inputDateList.length>1){
+            String[] inputDateList;
+            if(vaccineRecords[i+1].contains(":"))
+            {
+                //System.out.println(vaccineRecords[i+1]);
+                inputDateList = vaccineRecords[i+1].split(":");
+            }else
+            {//System.out.println(vaccineRecords[i+1]+"-----------------");
+                inputDateList = new String[]{vaccineRecords[i + 1]};
+            }
+
+            if(inputDateList.length>=1){
                 for(String inputDate:inputDateList){
-                    try {
-                        dateList.add(DateUtil.formatter.parse(inputDate));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
+
+                        try {
+
+                            dateList.add(DateUtil.formatter.parse(inputDate));
+                        } catch (ParseException e) {
+                            //e.printStackTrace();
+                        }
+
+
                 }
             }
             this.vaccineRecords.add(new VaccineRecord(VaccineFactory.getVaccine(vaccineRecords[i]),dateList));
@@ -61,6 +74,16 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public VaccineRecord getVaccineRecords(String name){
+        int r=0;
+        for(int i=0;i<vaccineRecords.size();i++){
+            if(vaccineRecords.get(i).getVacName().equals(name)){
+                r=i;
+            }
+        }
+        return this.vaccineRecords.get(r);
     }
 
     @Override

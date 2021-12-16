@@ -24,6 +24,7 @@ public class Controller {
         List<Student> studentList = readStudentInput(Constant.EXCEL_PATH);
         List<Teacher> teacherList = readTeacherInput(Constant.EXCEL_PATH);
         studentList.forEach(x -> logger.info(x.toString()));
+        //studentList.forEach(x -> logger.info(x.getRecord().toString()));
 //        studentList.forEach(logger::info);
         teacherList.forEach(x -> logger.info(x.toString()));
         spreadToClassroom(studentList, teacherList);

@@ -14,6 +14,8 @@ public class VaccineRecord {
         this.vaccine = vaccine;
         this.dateList = dateList;
     }
+    public List<Date> getDateList(){return dateList;}
+    public String getVacName(){return vaccine.getName();}
 
     @Override
     public String toString() {
@@ -29,6 +31,9 @@ public class VaccineRecord {
         }
         return sb.toString();
     }
+    public Vaccine getVaccine(){
+        return this.vaccine;
+    }
 
     public static void main(String[] args) {
         String a= "a:b";
@@ -36,4 +41,6 @@ public class VaccineRecord {
         System.out.println(b.length);
         System.out.println(Arrays.asList(b));
     }
+
+
 }
