@@ -2,6 +2,8 @@ package edu.neu.csye6200.UI;
 import org.apache.batik.ext.awt.image.spi.JDKRegistryEntry;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,6 +49,7 @@ public class Login {
                 JTextField tf;
                 JPasswordField psf;
                 JButton button;
+                //JCheckBox showPassword;
 
                         label1 = new JLabel("Administrator Login");
                         label1.setFont(new Font(label1.getFont().getName(), label1.getFont().getStyle(), 20));
@@ -56,13 +59,36 @@ public class Login {
                 label3.setFont(new Font(label3.getFont().getName(), label3.getFont().getStyle(), 20));
                         tf = new JTextField();
                         psf = new JPasswordField();
-
+                        //showPassword=new JCheckBox("Show Password");
                         button = new JButton("Login");
                 button.setFont(new Font(button.getFont().getName(), button.getFont().getStyle(), 20));
                         //监听器对象
+
                 button.addActionListener(e->{
-                        new StudentTable().showFrame();
-                        fr.dispose();
+                        if(tf.getText().isEmpty()&&psf.getPassword().length==0)
+                        {
+                                JOptionPane.showMessageDialog(null,"Empty input","!",JOptionPane.WARNING_MESSAGE);
+                        }else{
+                                if(tf.getText().startsWith("s")){
+                                        if(psf.getPassword().length!=0){
+                                                new TeacherTable().showFrame();
+                                                fr.dispose();
+                                        }else{
+                                                JOptionPane.showMessageDialog(null,"Empty password","!",JOptionPane.WARNING_MESSAGE);
+                                        }
+                                }else if(tf.getText().startsWith("t")){
+                                        if(psf.getPassword().length!=0){
+                                                new StudentTable().showFrame();
+                                                fr.dispose();
+                                        }else{
+                                                JOptionPane.showMessageDialog(null,"Empty password","!",JOptionPane.WARNING_MESSAGE);
+                                        }
+
+                                }else{
+                                        JOptionPane.showMessageDialog(null,"invaild user","!",JOptionPane.WARNING_MESSAGE);
+                                }
+                        }
+
                 });
 
                         // 为指定的 Container 创建 GroupLayout
@@ -78,6 +104,7 @@ public class Login {
                                 .addComponent(psf)
                                 .addComponent(tf).addComponent(button));
                         hGroup.addGap(5);
+
                         layout.setHorizontalGroup(hGroup);
                         //创建GroupLayout的垂直连续组，，越先加入的ParallelGroup，优先级级别越高。
                         GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
