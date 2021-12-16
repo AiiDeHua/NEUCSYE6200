@@ -2,13 +2,18 @@ package edu.neu.csye6200.util;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.*;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileUtil {
@@ -42,6 +47,37 @@ public class FileUtil {
             logger.error(e);
         }
         return rowList;
+    }
+
+    public static void writeExcelRowBySheet(String data, String path, int sheetNumber){
+      List<String> list = Arrays.asList(data.split(";"));
+        try {
+            FileInputStream file = new FileInputStream(new File(path));
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            XSSFSheet sheet = workbook.getSheetAt(sheetNumber);
+            sheet.createRow(sheet.getLastRowNum()+1);
+            XSSFRow row = sheet.getRow(sheet.getLastRowNum());
+
+            XSSFCell cell1 = row.createCell(0);
+            cell1.setCellValue(list.get(0));
+
+            XSSFCell cell0 = row.createCell(1);
+            cell0.setCellType(CellType.NUMERIC);
+            cell0.setCellValue(Double.parseDouble(list.get(1)));
+
+            XSSFCell cell2 = row.createCell(2);
+            cell2.setCellValue(list.get(2));
+
+            XSSFCell cell3 = row.createCell(3);
+            cell3.setCellType(CellType.NUMERIC);
+            cell3.setCellValue(Double.parseDouble(list.get(3)));
+
+            FileOutputStream fout = new FileOutputStream(path);
+            workbook.write(fout);
+            file.close();
+        } catch (Exception e) {
+            logger.error(e);
+        }
     }
 
 }

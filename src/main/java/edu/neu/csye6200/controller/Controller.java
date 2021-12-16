@@ -51,6 +51,14 @@ public class Controller {
         return teacherList;
     }
 
+    public static void updateStudent(String stuInfo,String path){
+        FileUtil.writeExcelRowBySheet(stuInfo,path, 0);
+    }
+
+    public static void updateTeacher(String teachInfo,String path){
+        FileUtil.writeExcelRowBySheet(teachInfo,path, 1);
+    }
+
     public static void main(String[] args) {
         Controller controller = new Controller();
         controller.readData();
