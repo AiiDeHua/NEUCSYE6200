@@ -9,7 +9,7 @@ public class DTaP implements Vaccine{
 
     @Override
     public int[] getExpiringTime() {
-        return new int[]{60, 60};
+        return new int[]{3650};
     }
 
     public static void main(String[] args) {

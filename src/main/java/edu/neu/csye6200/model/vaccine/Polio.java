@@ -8,6 +8,6 @@ public class Polio implements Vaccine{
 
     @Override
     public int[] getExpiringTime() {
-        return new int[0];
+        return new int[]{60};
     }
 }

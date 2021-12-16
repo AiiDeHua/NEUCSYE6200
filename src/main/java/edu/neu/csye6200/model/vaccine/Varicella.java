@@ -7,7 +7,8 @@ public class Varicella implements Vaccine{
     }
 
     @Override
-    public int[] getExpiringTime() {
-        return new int[0];
+    public int[] getExpiringTime() { {
+            return new int[]{90};
+        }
     }
 }
