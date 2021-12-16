@@ -17,6 +17,9 @@ public class Person {
     private List<VaccineRecord> vaccineRecords = new ArrayList<>();
 
     public Person() {}
+    public List<VaccineRecord> getVaccineRecords() {
+        return vaccineRecords;
+    }
 
     public Person(int age, String name) {
         this.age = age;
