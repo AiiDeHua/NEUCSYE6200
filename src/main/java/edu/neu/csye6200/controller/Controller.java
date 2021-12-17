@@ -9,6 +9,10 @@ import edu.neu.csye6200.view.Login;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +24,10 @@ public class Controller {
     Controller() {
     }
 
-    public void readData() {
-        //call view?
-        List<Student> studentList = readStudentInput(Constant.EXCEL_PATH);
-        List<Teacher> teacherList = readTeacherInput(Constant.EXCEL_PATH);
-        studentList.forEach(x -> logger.info(x.toString()));
-        teacherList.forEach(x -> logger.info(x.toString()));
-        spreadToClassroom(studentList, teacherList);
+    public static List<Student> readStudentData() {
+        JFileChooser j = new JFileChooser(System.getProperty("user.dir"));
+        j.showOpenDialog(null);
+        return readStudentInput(j.getSelectedFile().getName());
     }
 
     public static ClassroomRecord spreadToClassroomWithInputData(){

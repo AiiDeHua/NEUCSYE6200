@@ -1,6 +1,5 @@
 package edu.neu.csye6200.view;
 
-import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.controller.Controller;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.vaccine.VaccineRecord;
@@ -71,6 +70,13 @@ public class StudentTable {
             addNewStudentPanel.showFrame();
         });
         left.add(addStudent);
+        JButton readExcelFile = new JButton("Read excel file");
+
+        readExcelFile.addActionListener(e->{
+            studentList = Controller.readStudentData();
+            refreshData();
+        });
+        left.add(readExcelFile);
 
         JButton vaccinePage = new JButton("View the Vaccine Page");
 
@@ -118,7 +124,7 @@ public class StudentTable {
         tableModel.addColumn("Age");
         tableModel.addColumn("Vaccine");
         studentTable.setBackground(new Color(250,235,215));
-        studentList = Controller.readStudentInput(Constant.EXCEL_PATH);
+//        studentList = Controller.readStudentInput(Constant.EXCEL_PATH);
         for (Student student : studentList) {
             addRow(student);
         }
@@ -181,5 +187,11 @@ public class StudentTable {
         }
         VaccineList vl = new VaccineList();
         vl.showFrame(studentName,list);
+    }
+
+    public void refreshData(){
+        for (Student student : studentList) {
+            addRow(student);
+        }
     }
 }
