@@ -36,10 +36,6 @@ public class Controller {
 
     private static ClassroomRecord spreadToClassroom(List<Student> studentList, List<Teacher> teacherList) {
         ClassroomRecord classroomRecord = new ClassroomRecord();
-        List<Student> copyStudentList = new ArrayList<>(studentList.size());
-        copyStudentList.addAll(studentList);
-        List<Teacher> copyTeacherList = new ArrayList<>(teacherList.size());
-        copyTeacherList.addAll(teacherList);
         for (Teacher teacher : teacherList) {
             classroomRecord.addTeacher(teacher);
         }
