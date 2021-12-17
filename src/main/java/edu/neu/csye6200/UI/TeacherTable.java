@@ -21,17 +21,17 @@ public class TeacherTable {
     List<Teacher> teacherList = new ArrayList<>();
 
     public void showFrame(){
-        //创捷窗体对象
+        //鍒涙嵎绐椾綋瀵硅薄
         JFrame fr = new JFrame();
         fr.setTitle("Teacher Page");
         fr.setSize(1200,800);
-        //设置退出进程的方法
+        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
         fr.setDefaultCloseOperation(3);
 
-        //设置居中显示
+        //璁剧疆灞呬腑鏄剧ず
         fr.setLocationRelativeTo(null);
 
-        //设置panel
+        //璁剧疆panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
@@ -41,6 +41,7 @@ public class TeacherTable {
         JPanel left = new JPanel();
         container.add(left,BorderLayout.WEST);
         left.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
+        left.setBackground(new Color(148,124,176));
         //Button on left
         JButton viewStudent = new JButton("View Student Page");
         left.add(viewStudent);
@@ -68,6 +69,7 @@ public class TeacherTable {
         container.add(top,BorderLayout.NORTH);
         JLabel tittle = new JLabel("TEACHER LIST PAGE");
         tittle.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 80));
+        top.setBackground(new Color(148,124,176));
         top.add(tittle);
 
         //Right Panel
@@ -79,6 +81,7 @@ public class TeacherTable {
         JPanel middle = new JPanel();
         container.add(middle,BorderLayout.CENTER);
         middle.setLayout(new BorderLayout());
+        middle.setBackground(new Color(148,124,176));
 
         JLabel message = new JLabel("Please click on the vaccine column to check the detials.");
         message.setFont(new Font(message.getFont().getName(), message.getFont().getStyle(), 25));
@@ -86,8 +89,8 @@ public class TeacherTable {
         //Middle Table
         JTable teacherTable = new JTable();
         middle.add(teacherTable,BorderLayout.CENTER);
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
-        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//鍗曞厓鏍兼覆鏌撳櫒
+        tcr.setHorizontalAlignment(JLabel.CENTER);//灞呬腑鏄剧ず
         teacherTable.setDefaultRenderer(Object.class, tcr);
         teacherTable.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 20));
 
@@ -95,6 +98,8 @@ public class TeacherTable {
 
         teacherTable.setModel(tableModel);
         middle.add(new JScrollPane(teacherTable),BorderLayout.CENTER);
+        
+        teacherTable.setBackground(new Color(205,181,205));
 
         tableModel.addColumn("Name");
         tableModel.addColumn("Age");
@@ -108,20 +113,21 @@ public class TeacherTable {
         //Top Panel
         JPanel bottom = new JPanel();
         container.add(bottom,BorderLayout.SOUTH);
+        bottom.setBackground(new Color(148,124,176));
         JLabel none = new JLabel();
         none.setPreferredSize(new Dimension(0,200));
         bottom.add(none);
         top.add(none);
-        //监听器对象
+        //鐩戝惉鍣ㄥ璞�
 //        button.addActionListener(e->{
-//            System.out.println("此处跳转");
+//            System.out.println("姝ゅ璺宠浆");
 //        });
 
         teacherTable.addMouseListener( new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int rowI = teacherTable.rowAtPoint(e.getPoint());// 得到table的行号
-                int columnI = teacherTable.columnAtPoint(e.getPoint());// 得到table的列号
+                int rowI = teacherTable.rowAtPoint(e.getPoint());// 寰楀埌table鐨勮鍙�
+                int columnI = teacherTable.columnAtPoint(e.getPoint());// 寰楀埌table鐨勫垪鍙�
 //                JOptionPane.showMessageDialog(container,getVaccine(studentList,(String)studentTable.getValueAt(rowI, columnI)));
                 if (rowI > -1&&columnI>-1){
                     showVaccine((String)teacherTable.getValueAt(rowI, 0));
@@ -146,7 +152,7 @@ public class TeacherTable {
             }
 
         });
-        //显示窗体，放在最后
+        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
         fr.setVisible(true);
     }
     private void addRow(Teacher teacher){

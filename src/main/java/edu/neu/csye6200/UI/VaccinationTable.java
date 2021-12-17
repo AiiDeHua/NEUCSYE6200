@@ -21,17 +21,17 @@ public class VaccinationTable {
     DefaultTableModel tableModel = new DefaultTableModel();
 
     public void showFrame() {
-        //创捷窗体对象
+        //鍒涙嵎绐椾綋瀵硅薄
         JFrame fr = new JFrame();
         fr.setTitle("DayCare");
-        fr.setSize(2000, 800);
-        //设置退出进程的方法
+        fr.setSize(1200, 800);
+        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
         fr.setDefaultCloseOperation(3);
 
-        //设置居中显示
+        //璁剧疆灞呬腑鏄剧ず
         fr.setLocationRelativeTo(null);
 
-        //设置panel
+        //璁剧疆panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
@@ -41,6 +41,7 @@ public class VaccinationTable {
         JPanel left = new JPanel();
         container.add(left, BorderLayout.WEST);
         left.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
+        left.setBackground(new Color(38, 194, 129));
         //Button on left
         JButton viewTeacher = new JButton("View Teacher Page");
         left.add(viewTeacher);
@@ -69,11 +70,13 @@ public class VaccinationTable {
         JLabel tittle = new JLabel("Student Vaccination Page");
         tittle.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 80));
         top.add(tittle);
+        top.setBackground(new Color(38, 194, 129));
 
         //Right Panel
         JPanel right = new JPanel();
         container.add(right, BorderLayout.EAST);
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
+        right.setBackground(new Color(38, 194, 129));
 
         //JButton addStudent = new JButton("Add new student");
         //right.add(addStudent);
@@ -82,18 +85,21 @@ public class VaccinationTable {
         JPanel middle = new JPanel();
         container.add(middle, BorderLayout.CENTER);
         middle.setLayout(new BorderLayout());
+        middle.setBackground(new Color(38, 194, 129));
 
         //Middle Table
         JTable studentTable = new JTable();
         middle.add(studentTable, BorderLayout.CENTER);
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
-        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//鍗曞厓鏍兼覆鏌撳櫒
+        tcr.setHorizontalAlignment(JLabel.CENTER);//灞呬腑鏄剧ず
         studentTable.setDefaultRenderer(Object.class, tcr);
         studentTable.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 20));
 
         studentTable.setRowHeight(50);
 
         studentTable.setModel(tableModel);
+        studentTable.setBackground(new Color(200, 247, 197));
+        
         JScrollPane jScrollPane = new JScrollPane(studentTable,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 //        jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -117,19 +123,21 @@ public class VaccinationTable {
         for(int i=0;i<studentList.size();i++){
             addRow(studentList.get(i));
         }
+        
         //Top Panel
         JPanel bottom = new JPanel();
         container.add(bottom, BorderLayout.SOUTH);
+        bottom.setBackground(new Color(38, 194, 129));
         JLabel none = new JLabel();
         none.setPreferredSize(new Dimension(0, 200));
         bottom.add(none);
         top.add(none);
-        //监听器对象
+        //鐩戝惉鍣ㄥ璞�
 //        button.addActionListener(e->{
-//            System.out.println("此处跳转");
+//            System.out.println("姝ゅ璺宠浆");
 //        });
 
-        //显示窗体，放在最后
+        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
         fr.setVisible(true);
     }
 

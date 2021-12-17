@@ -19,21 +19,23 @@ import java.util.Vector;
 public class VaccineList {
 
     public void showFrame(String name,List<VaccineRecord> list){
-        //创捷窗体对象
+        //鍒涙嵎绐椾綋瀵硅薄
         JFrame fr = new JFrame();
         fr.setTitle("Vaccine Page");
         fr.setSize(1200,800);
-        //设置退出进程的方法
+        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
         fr.setDefaultCloseOperation(3);
 
-        //设置居中显示
+        //璁剧疆灞呬腑鏄剧ず
         fr.setLocationRelativeTo(null);
 
-        //设置panel
+        //璁剧疆panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
         container.setLayout(new BorderLayout());
+        
+        
 
         //Left Panel
         JPanel left = new JPanel();
@@ -91,13 +93,13 @@ public class VaccineList {
         none.setPreferredSize(new Dimension(0,200));
         bottom.add(none);
         top.add(none);
-        //监听器对象
+        //鐩戝惉鍣ㄥ璞�
 //        button.addActionListener(e->{
-//            System.out.println("此处跳转");
+//            System.out.println("姝ゅ璺宠浆");
 //        });
 
-
-        //显示窗体，放在最后
+        
+        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
         fr.setVisible(true);
     }
     public List<String> refactor(List<VaccineRecord> list){
