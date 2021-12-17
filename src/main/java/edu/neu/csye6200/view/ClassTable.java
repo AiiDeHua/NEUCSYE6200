@@ -1,15 +1,14 @@
-package edu.neu.csye6200.UI;
+package edu.neu.csye6200.view;
 
 import edu.neu.csye6200.controller.Controller;
 import edu.neu.csye6200.model.Student;
-import edu.neu.csye6200.model.classroom.*;
+import edu.neu.csye6200.model.classroom.Classroom;
 import edu.neu.csye6200.model.group.Group;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -18,17 +17,17 @@ public class ClassTable {
     DefaultTableModel tableModel = new DefaultTableModel();
 
     public void showFrame() {
-        //鍒涙嵎绐椾綋瀵硅薄
+        //创捷窗体对象
         JFrame fr = new JFrame();
         fr.setTitle("Login to DayCare");
-        fr.setSize(1200, 800);
-        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
+        fr.setSize(2000, 800);
+        //设置退出进程的方法
         fr.setDefaultCloseOperation(3);
 
-        //璁剧疆灞呬腑鏄剧ず
+        //设置居中显示
         fr.setLocationRelativeTo(null);
 
-        //璁剧疆panel
+        //设置panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
@@ -64,7 +63,6 @@ public class ClassTable {
         //Top Panel
         JPanel top = new JPanel();
         container.add(top, BorderLayout.NORTH);
-        top.setBackground(new Color(79,148,205));
         JLabel tittle = new JLabel("CLASS LIST PAGE");
         tittle.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 80));
         top.add(tittle);
@@ -73,20 +71,17 @@ public class ClassTable {
         JPanel right = new JPanel();
         container.add(right, BorderLayout.EAST);
         right.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
-        right.setBackground(new Color(79,148,205));
 
         //Middle Panel
         JPanel middle = new JPanel();
         container.add(middle, BorderLayout.CENTER);
         middle.setLayout(new BorderLayout());
-        middle.setBackground(new Color(79,148,205));
 
         //Middle Table
         JTable studentTable = new JTable();
-        studentTable.setBackground(new Color(198,226,255));
         middle.add(studentTable, BorderLayout.CENTER);
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//鍗曞厓鏍兼覆鏌撳櫒
-        tcr.setHorizontalAlignment(JLabel.CENTER);//灞呬腑鏄剧ず
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
+        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
         studentTable.setDefaultRenderer(Object.class, tcr);
         studentTable.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 20));
 
@@ -104,7 +99,6 @@ public class ClassTable {
         tableModel.addColumn("Group id");
         tableModel.addColumn("Teacher");
         tableModel.addColumn("Student");
-        
 
         List<List<Classroom>> classroomRecord = Controller.spreadToClassroomWithInputData().getClassroomRecord();
         for (int i = 0; i < classroomRecord.size(); i++) {
@@ -113,18 +107,17 @@ public class ClassTable {
         //Top Panel
         JPanel bottom = new JPanel();
         container.add(bottom, BorderLayout.SOUTH);
-        bottom.setBackground(new Color(79,148,205));
         JLabel none = new JLabel();
         none.setPreferredSize(new Dimension(0, 200));
         bottom.add(none);
         top.add(none);
-        //鐩戝惉鍣ㄥ璞�
+        //监听器对象
 //        button.addActionListener(e->{
-//            System.out.println("姝ゅ璺宠浆");
+//            System.out.println("此处跳转");
 //        });
 
 
-        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
+        //显示窗体，放在最后
         fr.setVisible(true);
     }
 

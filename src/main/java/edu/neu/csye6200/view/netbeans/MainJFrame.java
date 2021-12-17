@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.neu.csye6200.tmp.userinterface;
+package edu.neu.csye6200.view.netbeans;
 
 import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.util.FileUtil;
 import org.apache.poi.ss.usermodel.Row;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,7 +150,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         // TODO add your handling code here:
         List<Student> studentList = readStudentInput(Constant.EXCEL_PATH);
-
         SysadminWorkArea sawa = new SysadminWorkArea(userProcessContainer,studentList);
         userProcessContainer.add("SysadminWorkArea",sawa);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();

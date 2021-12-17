@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.neu.csye6200.tmp.userinterface;
+package edu.neu.csye6200.view.netbeans;
 
 import edu.neu.csye6200.model.Student;
 
-import java.util.List;
-import java.util.ArrayList;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 /**
  *

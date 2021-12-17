@@ -1,29 +1,27 @@
-package edu.neu.csye6200.UI;
+package edu.neu.csye6200.view;
 
 import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.util.DateUtil;
 import edu.neu.csye6200.util.FileUtil;
 
-import java.awt.Color;
-
 import javax.swing.*;
+import java.awt.*;
 
 public class AddNewStudentPanel {
 
 
 
     public void showFrame(){
-        //鍒涙嵎绐椾綋瀵硅薄
+        //创捷窗体对象
         JFrame fr = new JFrame();
         fr.setTitle("Login to DayCare");
-        //fr.setSize(1200,800);
         fr.setLayout(null);
         fr.setBounds(400, 200, 600, 400);
         fr.setBackground(new Color(38, 194, 129));
-        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
+        //设置退出进程的方法
         fr.setDefaultCloseOperation(2);
 
-        //璁剧疆灞呬腑鏄剧ず
+        //设置居中显示
         fr.setLocationRelativeTo(null);
 
         JLabel name;
@@ -125,7 +123,6 @@ public class AddNewStudentPanel {
             FileUtil.writeExcelRowBySheet(stringBuilder.toString(), Constant.EXCEL_PATH, 0);
             fr.dispose();
         });
-        
 
         fr.add(DTapText);
         fr.add(HepatitisBText);
@@ -145,8 +142,6 @@ public class AddNewStudentPanel {
         fr.add(Varicella);
         fr.add(addNewStudent);
         fr.setVisible(true);
-        
-        
     }
 
 }

@@ -1,12 +1,9 @@
-package edu.neu.csye6200.UI;
+package edu.neu.csye6200.view;
 
 import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.controller.Controller;
 import edu.neu.csye6200.model.Student;
-import edu.neu.csye6200.model.classroom.Classroom;
-import edu.neu.csye6200.model.group.Group;
 import edu.neu.csye6200.model.vaccine.VaccineRecord;
-import edu.neu.csye6200.util.DateUtil;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -21,17 +18,17 @@ public class VaccinationTable {
     DefaultTableModel tableModel = new DefaultTableModel();
 
     public void showFrame() {
-        //鍒涙嵎绐椾綋瀵硅薄
+        //创捷窗体对象
         JFrame fr = new JFrame();
         fr.setTitle("DayCare");
-        fr.setSize(1200, 800);
-        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
+        fr.setSize(2000, 800);
+        //设置退出进程的方法
         fr.setDefaultCloseOperation(3);
 
-        //璁剧疆灞呬腑鏄剧ず
+        //设置居中显示
         fr.setLocationRelativeTo(null);
 
-        //璁剧疆panel
+        //设置panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
@@ -90,16 +87,15 @@ public class VaccinationTable {
         //Middle Table
         JTable studentTable = new JTable();
         middle.add(studentTable, BorderLayout.CENTER);
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//鍗曞厓鏍兼覆鏌撳櫒
-        tcr.setHorizontalAlignment(JLabel.CENTER);//灞呬腑鏄剧ず
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
+        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
         studentTable.setDefaultRenderer(Object.class, tcr);
         studentTable.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 20));
 
         studentTable.setRowHeight(50);
+        studentTable.setBackground(new Color(200, 247, 197));
 
         studentTable.setModel(tableModel);
-        studentTable.setBackground(new Color(200, 247, 197));
-        
         JScrollPane jScrollPane = new JScrollPane(studentTable,ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 //        jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -123,7 +119,6 @@ public class VaccinationTable {
         for(int i=0;i<studentList.size();i++){
             addRow(studentList.get(i));
         }
-        
         //Top Panel
         JPanel bottom = new JPanel();
         container.add(bottom, BorderLayout.SOUTH);
@@ -132,12 +127,12 @@ public class VaccinationTable {
         none.setPreferredSize(new Dimension(0, 200));
         bottom.add(none);
         top.add(none);
-        //鐩戝惉鍣ㄥ璞�
+        //监听器对象
 //        button.addActionListener(e->{
-//            System.out.println("姝ゅ璺宠浆");
+//            System.out.println("此处跳转");
 //        });
 
-        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
+        //显示窗体，放在最后
         fr.setVisible(true);
     }
 
@@ -148,8 +143,8 @@ public class VaccinationTable {
             Date op= in.getNextVaxDate(k.getVacName());
             System.out.println(in.getName()+", "+k.getVacName()+" "+op);
             if(op==null){
-               rowData.add("Completed");
-           }else {
+                rowData.add("Completed");
+            }else {
                 String pattern = "yyyy-MM-dd";
                 SimpleDateFormat sf = new SimpleDateFormat(pattern);
                 if(sf.format(op).equals(sf.format(new Date())))
@@ -159,7 +154,7 @@ public class VaccinationTable {
                     rowData.add(sf.format(op));
 
                 }
-           }
+            }
 
         }
 

@@ -1,8 +1,8 @@
 package edu.neu.csye6200.model.classroom;
 
-import edu.neu.csye6200.model.group.Group;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.model.group.Group;
 
 import java.util.ArrayList;
 import java.util.List;

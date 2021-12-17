@@ -1,10 +1,11 @@
 package edu.neu.csye6200.controller;
 
 import edu.neu.csye6200.common.Constant;
-import edu.neu.csye6200.model.classroom.ClassroomRecord;
 import edu.neu.csye6200.model.Student;
 import edu.neu.csye6200.model.Teacher;
+import edu.neu.csye6200.model.classroom.ClassroomRecord;
 import edu.neu.csye6200.util.FileUtil;
+import edu.neu.csye6200.view.Login;
 import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
 
@@ -88,8 +89,8 @@ public class Controller {
         FileUtil.writeExcelRowBySheet(teachInfo,path, 1);
     }
 
-    public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.readData();
+    public static void main(String args[]) {
+        Login tf = new Login();
+        tf.showFrame();
     }
 }

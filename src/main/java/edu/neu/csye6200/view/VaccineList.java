@@ -1,41 +1,32 @@
-package edu.neu.csye6200.UI;
+package edu.neu.csye6200.view;
 
-import edu.neu.csye6200.common.Constant;
-import edu.neu.csye6200.controller.Controller;
-import edu.neu.csye6200.model.Teacher;
 import edu.neu.csye6200.model.vaccine.VaccineRecord;
 import edu.neu.csye6200.util.DateUtil;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
 
 public class VaccineList {
 
     public void showFrame(String name,List<VaccineRecord> list){
-        //鍒涙嵎绐椾綋瀵硅薄
+        //创捷窗体对象
         JFrame fr = new JFrame();
         fr.setTitle("Vaccine Page");
         fr.setSize(1200,800);
-        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
+        //设置退出进程的方法
         fr.setDefaultCloseOperation(3);
 
-        //璁剧疆灞呬腑鏄剧ず
+        //设置居中显示
         fr.setLocationRelativeTo(null);
 
-        //璁剧疆panel
+        //设置panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
         container.setLayout(new BorderLayout());
-        
-        
 
         //Left Panel
         JPanel left = new JPanel();
@@ -93,13 +84,13 @@ public class VaccineList {
         none.setPreferredSize(new Dimension(0,200));
         bottom.add(none);
         top.add(none);
-        //鐩戝惉鍣ㄥ璞�
+        //监听器对象
 //        button.addActionListener(e->{
-//            System.out.println("姝ゅ璺宠浆");
+//            System.out.println("此处跳转");
 //        });
 
-        
-        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
+
+        //显示窗体，放在最后
         fr.setVisible(true);
     }
     public List<String> refactor(List<VaccineRecord> list){
@@ -112,8 +103,8 @@ public class VaccineList {
             if(tempList.size()==0){dateString += "No Record Found";
             } else{
                 for (Date date : tempList) {
-                dateString = dateString+DateUtil.formatter.format(date)+" ";
-            } }
+                    dateString = dateString+DateUtil.formatter.format(date)+" ";
+                } }
             result.add(dateString);
         }
         return result;

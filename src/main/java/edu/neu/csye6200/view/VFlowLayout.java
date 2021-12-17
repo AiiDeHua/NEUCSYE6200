@@ -1,4 +1,4 @@
-package edu.neu.csye6200.UI;
+package edu.neu.csye6200.view;
 
 import javax.swing.*;
 import java.awt.*;

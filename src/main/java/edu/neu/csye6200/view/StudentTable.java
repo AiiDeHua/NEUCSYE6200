@@ -1,4 +1,4 @@
-package edu.neu.csye6200.UI;
+package edu.neu.csye6200.view;
 
 import edu.neu.csye6200.common.Constant;
 import edu.neu.csye6200.controller.Controller;
@@ -20,19 +20,18 @@ public class StudentTable {
     List<Student> studentList = new ArrayList<>();
     JTable studentTable;
 
-
     public void showFrame(){
-        //鍒涙嵎绐椾綋瀵硅薄
+        //创捷窗体对象
         JFrame fr = new JFrame();
         fr.setTitle("Login to DayCare");
         fr.setSize(1200,800);
-        //璁剧疆閫�鍑鸿繘绋嬬殑鏂规硶
+        //设置退出进程的方法
         fr.setDefaultCloseOperation(3);
 
-        //璁剧疆灞呬腑鏄剧ず
+        //设置居中显示
         fr.setLocationRelativeTo(null);
 
-        //璁剧疆panel
+        //设置panel
         JPanel container = new JPanel();
         fr.setContentPane(container);
 
@@ -43,7 +42,7 @@ public class StudentTable {
         left.setBackground(new Color(222,156,83));
         container.add(left,BorderLayout.WEST);
         left.setLayout(new VFlowLayout(VFlowLayout.MIDDLE));
-            //Button on left
+        //Button on left
         JButton viewTeacher = new JButton("View Teacher Page");
         left.add(viewTeacher);
         viewTeacher.addActionListener(e->{
@@ -101,13 +100,12 @@ public class StudentTable {
         JLabel message = new JLabel("Please click on the vaccine column to check the detials.");
         message.setFont(new Font(message.getFont().getName(), message.getFont().getStyle(), 25));
         middle.add(message,BorderLayout.NORTH);
-        middle.setBackground(new Color(222,156,83));
-        
         //Middle Table
+        middle.setBackground(new Color(222,156,83));
         studentTable = new JTable();
         middle.add(studentTable,BorderLayout.CENTER);
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//鍗曞厓鏍兼覆鏌撳櫒
-        tcr.setHorizontalAlignment(JLabel.CENTER);//灞呬腑鏄剧ず
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
+        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
         studentTable.setDefaultRenderer(Object.class, tcr);
         studentTable.setFont(new Font(tittle.getFont().getName(), tittle.getFont().getStyle(), 20));
 
@@ -119,10 +117,7 @@ public class StudentTable {
         tableModel.addColumn("Name");
         tableModel.addColumn("Age");
         tableModel.addColumn("Vaccine");
-        
-        
         studentTable.setBackground(new Color(250,235,215));
-
         studentList = Controller.readStudentInput(Constant.EXCEL_PATH);
         for (Student student : studentList) {
             addRow(student);
@@ -137,15 +132,11 @@ public class StudentTable {
         bottom.add(none);
         top.add(none);
         bottom.setBackground(new Color(222,156,83));
-        //鐩戝惉鍣ㄥ璞�
-//        button.addActionListener(e->{
-//            System.out.println("姝ゅ璺宠浆");
-//        });
         studentTable.addMouseListener( new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int rowI = studentTable.rowAtPoint(e.getPoint());// 寰楀埌table鐨勮鍙�
-                int columnI = studentTable.columnAtPoint(e.getPoint());// 寰楀埌table鐨勫垪鍙�
+                int rowI = studentTable.rowAtPoint(e.getPoint());// 得到table的行号
+                int columnI = studentTable.columnAtPoint(e.getPoint());// 得到table的列号
 //                JOptionPane.showMessageDialog(container,getVaccine(studentList,(String)studentTable.getValueAt(rowI, columnI)));
                 if (rowI > -1&&columnI>-1){
                     showVaccine((String)studentTable.getValueAt(rowI, 0));
@@ -171,9 +162,8 @@ public class StudentTable {
 
         });
 
-        //鏄剧ず绐椾綋锛屾斁鍦ㄦ渶鍚�
+        //显示窗体，放在最后
         fr.setVisible(true);
-        
     }
     private void addRow(Student student){
         Vector<Object> rowData = new Vector<>();
